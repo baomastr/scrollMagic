@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.d70f1fd2.chunk.css",
-  "main.js": "/static/js/main.7879f02e.chunk.js",
-  "main.js.map": "/static/js/main.7879f02e.chunk.js.map",
-  "static/js/1.146e7e7e.chunk.js": "/static/js/1.146e7e7e.chunk.js",
-  "static/js/1.146e7e7e.chunk.js.map": "/static/js/1.146e7e7e.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/media/styles.css": "/static/media/Slide_1_sheme.711e3dac.png",
-  "static/css/main.d70f1fd2.chunk.css.map": "/static/css/main.d70f1fd2.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.2461f0eefde349127f0a50a35403abeb.js": "/precache-manifest.2461f0eefde349127f0a50a35403abeb.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "/baomastr/scrollMagic/static/css/main.d70f1fd2.chunk.css",
+  "main.js": "/baomastr/scrollMagic/static/js/main.7879f02e.chunk.js",
+  "main.js.map": "/baomastr/scrollMagic/static/js/main.7879f02e.chunk.js.map",
+  "static/js/1.146e7e7e.chunk.js": "/baomastr/scrollMagic/static/js/1.146e7e7e.chunk.js",
+  "static/js/1.146e7e7e.chunk.js.map": "/baomastr/scrollMagic/static/js/1.146e7e7e.chunk.js.map",
+  "runtime~main.js": "/baomastr/scrollMagic/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/baomastr/scrollMagic/static/js/runtime~main.229c360f.js.map",
+  "static/media/styles.css": "/baomastr/scrollMagic/static/media/Slide_1_sheme.711e3dac.png",
+  "static/css/main.d70f1fd2.chunk.css.map": "/baomastr/scrollMagic/static/css/main.d70f1fd2.chunk.css.map",
+  "index.html": "/baomastr/scrollMagic/index.html",
+  "precache-manifest.621eec9d02a80490e51d6a80063f435d.js": "/baomastr/scrollMagic/precache-manifest.621eec9d02a80490e51d6a80063f435d.js",
+  "service-worker.js": "/baomastr/scrollMagic/service-worker.js"
 }
