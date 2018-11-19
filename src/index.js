@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import ScrollMagic from "scrollmagic";
-import { TweenMax, TimelineMax } from "gsap";
+import { TweenLite, TimelineLite } from "gsap";
 import "animation.gsap";
 import "debug.addIndicators";
 import ScrollingColorBackground from "react-scrolling-color-background";
 
 import "./styles.css";
 
-const element = document.documentElement,
-  page = document.getElementsByTagName("body")[0],
-  pageWidth = window.innerWidth || element.clientWidth || page.clientWidth,
-  pageHeight = window.innerHeight || element.clientHeight || page.clientHeight;
+// const element = document.documentElement,
+//   page = document.getElementsByTagName("body")[0],
+//   pageWidth = window.innerWidth || element.clientWidth || page.clientWidth,
+//   pageHeight = window.innerHeight || element.clientHeight || page.clientHeight;
 
 const onCompleteFunc = item => () => {
   console.log(item);
@@ -77,8 +77,8 @@ class App extends Component {
     this.controller1 = new ScrollMagic.Controller();
     this.controller2 = new ScrollMagic.Controller();
     // this.scene = new ScrollMagic.Scene();
-    this.tween1 = new TimelineMax();
-    this.tween2 = new TimelineMax();
+    this.tween1 = new TimelineLite();
+    this.tween2 = new TimelineLite();
     this.ball = React.createRef();
     this.trigger1 = React.createRef();
     this.trigger2 = React.createRef();
@@ -100,64 +100,64 @@ class App extends Component {
 
     const tween1 = this.tween1
       .add(
-        TweenMax.to(this.ball.current, 1.13, {
+        TweenLite.to(this.ball.current, 1.13, {
           css: { bezier: flightpath1["1"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 1.36, {
+        TweenLite.to(this.ball.current, 1.36, {
           css: { bezier: flightpath1["2"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 0.61, {
+        TweenLite.to(this.ball.current, 0.61, {
           css: { bezier: flightpath1["3"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 1.05, {
+        TweenLite.to(this.ball.current, 1.05, {
           css: { bezier: flightpath1["4"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 0.61, {
+        TweenLite.to(this.ball.current, 0.61, {
           css: { bezier: flightpath1["5"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 1.2, {
+        TweenLite.to(this.ball.current, 1.2, {
           css: { bezier: flightpath1["6"] }
         })
       );
 
     const tween2 = this.tween2
       .add(
-        TweenMax.to(this.ball.current, 1.13, {
+        TweenLite.to(this.ball.current, 1.13, {
           css: { bezier: flightpath2["1"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 1.36, {
+        TweenLite.to(this.ball.current, 1.36, {
           css: { bezier: flightpath2["2"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 0.61, {
+        TweenLite.to(this.ball.current, 0.61, {
           css: { bezier: flightpath2["3"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 1.05, {
+        TweenLite.to(this.ball.current, 1.05, {
           css: { bezier: flightpath2["4"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 0.61, {
+        TweenLite.to(this.ball.current, 0.61, {
           css: { bezier: flightpath2["5"] }
         })
       )
       .add(
-        TweenMax.to(this.ball.current, 1.2, {
+        TweenLite.to(this.ball.current, 1.2, {
           css: { bezier: flightpath2["6"] }
         })
       );
