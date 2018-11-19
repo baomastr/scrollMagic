@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/scrollMagic/precache-manifest.9b7327024a9cf17f7f5ff39e053dc1a7.js"
+  "/scrollMagic/precache-manifest.16e6c0b3e2eacfd16421d964181940e5.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/scrollMagic/index.html", {
+workbox.routing.registerNavigationRoute("/baomastr/scrollMagic/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/scrollMagic/static/css/main.3aa5c394.chunk.css"
   },
   {
-    "revision": "5c37dac13605c9ae9b472276124efdfa",
+    "revision": "0e3f352ecfd16ce6aeb1c940388f617d",
     "url": "/scrollMagic/index.html"
   }
 ];
