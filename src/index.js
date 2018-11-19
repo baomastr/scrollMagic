@@ -211,9 +211,12 @@ class App extends Component {
           </div>
         </section>
 
-        <div className="spacer" />
-        <div className="spacer" />
+        <div className="trigger" />
 
+        <section className="section" data-background-color="rgb(160, 91, 126)">
+          <div className="spacer" />
+          <div className="spacer" />
+        </section>
       </div>
     );
   }
