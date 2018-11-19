@@ -2,7 +2,7 @@ body {
   margin: 0;
 }
 
-.App {
+.root {
   font-family: sans-serif;
   text-align: center;
   position: relative;
@@ -46,6 +46,6 @@ body {
 }
 
 .trigger {
-  /*height: 1px;
-  background-color: #000;*/
+  height: 1px;
+  background-color: #000;
 }
