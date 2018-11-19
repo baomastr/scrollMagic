@@ -184,7 +184,7 @@ class App extends Component {
         <ScrollingColorBackground
           selector=".section[data-background-color]"
           colorDataAttribute="data-background-color"
-          initialRgb="rgb(0, 0, 0)"
+          initialRgb="rgb(32, 202, 172)"
           style={{
             zIndex: -1,
             position: "fixed",
