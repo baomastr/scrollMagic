@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.d70f1fd2.chunk.css",
-  "main.js": "/static/js/main.7879f02e.chunk.js",
-  "main.js.map": "/static/js/main.7879f02e.chunk.js.map",
-  "static/js/1.146e7e7e.chunk.js": "/static/js/1.146e7e7e.chunk.js",
-  "static/js/1.146e7e7e.chunk.js.map": "/static/js/1.146e7e7e.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/media/styles.css": "/static/media/Slide_1_sheme.711e3dac.png",
-  "static/css/main.d70f1fd2.chunk.css.map": "/static/css/main.d70f1fd2.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.2461f0eefde349127f0a50a35403abeb.js": "/precache-manifest.2461f0eefde349127f0a50a35403abeb.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "/scrollMagic/static/css/main.3aa5c394.chunk.css",
+  "main.js": "/scrollMagic/static/js/main.29d40751.chunk.js",
+  "main.js.map": "/scrollMagic/static/js/main.29d40751.chunk.js.map",
+  "static/js/1.146e7e7e.chunk.js": "/scrollMagic/static/js/1.146e7e7e.chunk.js",
+  "static/js/1.146e7e7e.chunk.js.map": "/scrollMagic/static/js/1.146e7e7e.chunk.js.map",
+  "runtime~main.js": "/scrollMagic/static/js/runtime~main.2af15b71.js",
+  "runtime~main.js.map": "/scrollMagic/static/js/runtime~main.2af15b71.js.map",
+  "static/media/styles.css": "/scrollMagic/static/media/Slide_1_sheme.711e3dac.png",
+  "static/css/main.3aa5c394.chunk.css.map": "/scrollMagic/static/css/main.3aa5c394.chunk.css.map",
+  "index.html": "/scrollMagic/index.html",
+  "precache-manifest.9b7327024a9cf17f7f5ff39e053dc1a7.js": "/scrollMagic/precache-manifest.9b7327024a9cf17f7f5ff39e053dc1a7.js",
+  "service-worker.js": "/scrollMagic/service-worker.js"
 }
