@@ -4,7 +4,7 @@ import ScrollMagic from "scrollmagic";
 import { TweenLite, TimelineLite } from "gsap";
 import "animation.gsap";
 import "debug.addIndicators";
-import ScrollingColorBackground from "react-scrolling-color-background";
+import ScrollingColorBackground from "./lib/ScrollingColorBackground";
 import matchMedia from "./utils/matchMedia";
 
 import "./styles.css";
@@ -89,6 +89,7 @@ class App extends Component {
     this.trigger2 = React.createRef();
     this.target1 = React.createRef();
     this.target2 = React.createRef();
+    this.backgroundSection = React.createRef();
   }
 
   state = {
@@ -205,9 +206,10 @@ class App extends Component {
 
   render() {
     // console.log(this.state.isMobile);
-    console.log(PADDING_TOP/pageHeight);
+    // console.log(PADDING_TOP/pageHeight);
+    // console.log(this.backgroundSection.current && this.backgroundSection.current.state ? this.backgroundSection.current.state.rgbString : null);
     return (
-      <div className="root">
+      <div className="root" style={{paddingTop: PADDING_TOP}}>
         <ScrollingColorBackground
           selector=".section[data-background-color]"
           colorDataAttribute="data-background-color"
@@ -220,6 +222,7 @@ class App extends Component {
             right: "0px",
             bottom: "0px"
           }}
+          ref={this.backgroundSection}
         />
 
         <div className="ball isFixed" ref={this.ball} />
