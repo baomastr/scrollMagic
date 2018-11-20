@@ -9,10 +9,12 @@ import matchMedia from "./utils/matchMedia";
 
 import "./styles.css";
 
-// const element = document.documentElement,
-//   page = document.getElementsByTagName("body")[0],
-//   pageWidth = window.innerWidth || element.clientWidth || page.clientWidth,
-//   pageHeight = window.innerHeight || element.clientHeight || page.clientHeight;
+const element = document.documentElement,
+  page = document.getElementsByTagName("body")[0],
+  pageWidth = window.innerWidth || element.clientWidth || page.clientWidth,
+  pageHeight = window.innerHeight || element.clientHeight || page.clientHeight;
+
+const PADDING_TOP = 120;
 
 const media = matchMedia("(max-width: 640px)");
 
@@ -100,14 +102,16 @@ class App extends Component {
     const scene1Config = {
       triggerElement: this.trigger1.current,
       duration: 1080,
-      offset: 388,
-      triggerHook: this.state.isMobile ? 0.75 : null
+      triggerHook: PADDING_TOP/pageHeight,
+      // offset: 388,
+      // triggerHook: this.state.isMobile ? 0.75 : .5
     };
     const scene2Config = {
       triggerElement: this.trigger2.current,
       duration: 1080,
-      offset: 388,
-      triggerHook: this.state.isMobile ? 0.75 : null
+      triggerHook: PADDING_TOP/pageHeight,
+      // offset: 388,
+      // triggerHook: this.state.isMobile ? 0.75 : .5
     };
 
     const tween1 = this.tween1
@@ -201,6 +205,7 @@ class App extends Component {
 
   render() {
     // console.log(this.state.isMobile);
+    console.log(PADDING_TOP/pageHeight);
     return (
       <div className="root">
         <ScrollingColorBackground
@@ -217,7 +222,7 @@ class App extends Component {
           }}
         />
 
-        <div className="ball" ref={this.ball} />
+        <div className="ball isFixed" ref={this.ball} />
 
         <section className="section" data-background-color="rgb(32, 202, 172)">
           <div className="wrapper wrapper1">

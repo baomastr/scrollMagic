@@ -38,10 +38,13 @@ body {
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  position: fixed;
-  left: 50%;
-  top: 100px;
-  z-index: 1;
+}
+
+.ball.isFixed {
+    position: fixed;
+    left: 50%;
+    top: 100px;
+    z-index: 1;
 }
 
 .spacer {
