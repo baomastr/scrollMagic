@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import ScrollMagic from "scrollmagic";
-import { TweenLite, TimelineLite } from "gsap";
+import { TweenLite, TimelineLite, SteppedEase, Power0 } from "gsap";
 import "animation.gsap";
 import "debug.addIndicators";
 import ScrollingColorBackground from "./lib/ScrollingColorBackground";
@@ -18,61 +18,82 @@ const PADDING_TOP = 120;
 
 const media = matchMedia("(max-width: 640px)");
 
-const onCompleteFunc = item => () => {
-  console.log(item);
-};
-
-const sceneEventFunc = event => {
-  const logger = () => console.log("Event fired! (" + event.type + ")");
-
-  if (
-    event.type === "start" ||
-    event.type === "leave" ||
-    event.type === "end"
-  ) {
-    logger();
-  }
-};
+// const onCompleteFunc = item => () => {
+//   console.log(item);
+// };
+//
+// const sceneEventFunc = event => {
+//   const logger = () => console.log("Event fired! (" + event.type + ")");
+//
+//   if (
+//     event.type === "start" ||
+//     event.type === "leave" ||
+//     event.type === "end"
+//   ) {
+//     logger();
+//   }
+// };
 
 const flightpath1 = {
   "1": {
-    values: [{ x: 0, onComplete: onCompleteFunc("1 started") }, { x: 280 }]
+    values: [{ x: 0 }, { x: 280 }]
   },
   "2": {
-    values: [{ x: 280, onComplete: onCompleteFunc("2 started") }, { x: 94 }]
+    values: [{ x: 280 }, { x: 94 }]
   },
   "3": {
-    values: [{ x: 94, onComplete: onCompleteFunc("3 started") }, { x: -60 }]
+    values: [{ x: 94 }, { x: -60 }]
   },
   "4": {
-    values: [{ x: -60, onComplete: onCompleteFunc("4 started") }, { x: -230 }]
+    values: [{ x: -60 }, { x: -230 }]
   },
   "5": {
-    values: [{ x: -230, onComplete: onCompleteFunc("5 started") }, { x: -335 }]
+    values: [{ x: -230 }, { x: -335 }]
   },
   "6": {
-    values: [{ x: -335, onComplete: onCompleteFunc("6 started") }, { x: 0 }]
+    values: [{ x: -335 }, { x: 0 }]
   }
 };
 
 const flightpath2 = {
   "1": {
-    values: [{ x: 0, onComplete: onCompleteFunc("1 started") }, { x: 280 }]
+    values: [{ x: 0 }, { x: 128 }]
   },
   "2": {
-    values: [{ x: 280, onComplete: onCompleteFunc("2 started") }, { x: 94 }]
+    values: [{ x: 128 }, { x: 157 }]
   },
   "3": {
-    values: [{ x: 94, onComplete: onCompleteFunc("3 started") }, { x: -60 }]
+    values: [{ x: 157 }, { x: 128 }]
   },
   "4": {
-    values: [{ x: -60, onComplete: onCompleteFunc("4 started") }, { x: -230 }]
+    values: [{ x: 128 }, { x: -16 }]
   },
   "5": {
-    values: [{ x: -230, onComplete: onCompleteFunc("5 started") }, { x: -335 }]
+    values: [{ x: -16 }, { x: -45 }]
   },
   "6": {
-    values: [{ x: -335, onComplete: onCompleteFunc("6 started") }, { x: 0 }]
+    values: [{ x: -45 }, { x: -16 }]
+  },
+  "7": {
+    values: [{ x: -16 }, { x: 13 }]
+  },
+  "8": {
+    values: [{ x: 13 }, { x: -16 }]
+  },
+  "9": {
+    values: [{ x: -16 }, { x: -228 }]
+  },
+  "10": {
+    values: [{ x: -228 }, { x: -257 }]
+  },
+  "11": {
+    values: [{ x: -257 }, { x: -228 }]
+  },
+  "12": {
+    values: [{ x: -228 }, { x: -30 }]
+  },
+  "13": {
+    values: [{ x: -30 }, { x: 0 }]
   }
 };
 
@@ -103,91 +124,148 @@ class App extends Component {
     const scene1Config = {
       triggerElement: this.trigger1.current,
       duration: 1080,
-      triggerHook: PADDING_TOP/pageHeight,
+      triggerHook: PADDING_TOP / pageHeight
       // offset: 388,
       // triggerHook: this.state.isMobile ? 0.75 : .5
     };
     const scene2Config = {
       triggerElement: this.trigger2.current,
       duration: 1080,
-      triggerHook: PADDING_TOP/pageHeight,
+      triggerHook: PADDING_TOP / pageHeight
       // offset: 388,
       // triggerHook: this.state.isMobile ? 0.75 : .5
     };
 
+    // const steppedEase = new SteppedEase(5);
+
     const tween1 = this.tween1
       .add(
         TweenLite.to(this.ball.current, 1.13, {
-          css: { bezier: flightpath1["1"] }
+          css: { bezier: flightpath1["1"] },
+          // ease: Power0.easeNone
         })
       )
       .add(
         TweenLite.to(this.ball.current, 1.36, {
-          css: { bezier: flightpath1["2"] }
+          css: { bezier: flightpath1["2"] },
+          ease: SteppedEase.config(12),
         })
       )
       .add(
         TweenLite.to(this.ball.current, 0.61, {
-          css: { bezier: flightpath1["3"] }
+          css: { bezier: flightpath1["3"] },
+          ease: Power0.easeNone
         })
       )
       .add(
         TweenLite.to(this.ball.current, 1.05, {
-          css: { bezier: flightpath1["4"] }
+          css: { bezier: flightpath1["4"] },
+          ease: SteppedEase.config(12),
         })
       )
       .add(
         TweenLite.to(this.ball.current, 0.61, {
-          css: { bezier: flightpath1["5"] }
+          css: { bezier: flightpath1["5"] },
+          ease: Power0.easeNone
         })
       )
       .add(
         TweenLite.to(this.ball.current, 1.2, {
-          css: { bezier: flightpath1["6"] }
+          css: { bezier: flightpath1["6"] },
+          ease: Power0.easeNone
         })
       );
 
+
     const tween2 = this.tween2
       .add(
-        TweenLite.to(this.ball.current, 1.13, {
-          css: { bezier: flightpath2["1"] }
+        TweenLite.to(this.ball.current, 0.87,{
+          css: { bezier: flightpath2["1"] },
+          ease: Power0.easeNone
         })
       )
       .add(
-        TweenLite.to(this.ball.current, 1.36, {
-          css: { bezier: flightpath2["2"] }
+        TweenLite.to(this.ball.current, 0.67,{
+          css: { bezier: flightpath2["2"] },
+          ease: Power0.easeNone
         })
       )
       .add(
-        TweenLite.to(this.ball.current, 0.61, {
-          css: { bezier: flightpath2["3"] }
+        TweenLite.to(this.ball.current, 0.67,{
+          css: { bezier: flightpath2["3"] },
+          ease: Power0.easeNone
         })
       )
       .add(
-        TweenLite.to(this.ball.current, 1.05, {
-          css: { bezier: flightpath2["4"] }
+        TweenLite.to(this.ball.current, 2.38,{
+          css: { bezier: flightpath2["4"] },
+          ease: SteppedEase.config(12),
         })
       )
       .add(
-        TweenLite.to(this.ball.current, 0.61, {
-          css: { bezier: flightpath2["5"] }
+        TweenLite.to(this.ball.current, 0.67,{
+          css: { bezier: flightpath2["5"] },
+          ease: Power0.easeNone
         })
       )
       .add(
-        TweenLite.to(this.ball.current, 1.2, {
-          css: { bezier: flightpath2["6"] }
+        TweenLite.to(this.ball.current, 0.67,{
+          css: { bezier: flightpath2["6"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.67,{
+          css: { bezier: flightpath2["7"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.67,{
+          css: { bezier: flightpath2["8"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 1.49,{
+          css: { bezier: flightpath2["9"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.67,{
+          css: { bezier: flightpath2["10"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.67,{
+          css: { bezier: flightpath2["11"] },
+          ease: SteppedEase.config(12),
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 1.73,{
+          css: { bezier: flightpath2["12"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 1.12,{
+          css: { bezier: flightpath2["13"] },
+          ease: Power0.easeNone
         })
       );
 
     new ScrollMagic.Scene(scene1Config)
-      .on("change update progress start end enter leave", sceneEventFunc)
+      // .on("change update progress start end enter leave", sceneEventFunc)
       .setPin(this.target1.current)
       .setTween(tween1)
       .addIndicators() // add indicators (requires plugin)
       .addTo(this.controller1);
 
     new ScrollMagic.Scene(scene2Config)
-      .on("change update progress start end enter leave", sceneEventFunc)
+      // .on("change update progress start end enter leave", sceneEventFunc)
       .setPin(this.target2.current)
       .setTween(tween2)
       .addIndicators() // add indicators (requires plugin)
@@ -209,7 +287,7 @@ class App extends Component {
     // console.log(PADDING_TOP/pageHeight);
     // console.log(this.backgroundSection.current && this.backgroundSection.current.state ? this.backgroundSection.current.state.rgbString : null);
     return (
-      <div className="root" style={{paddingTop: PADDING_TOP}}>
+      <div className="root" style={{ paddingTop: PADDING_TOP }}>
         <ScrollingColorBackground
           selector=".section[data-background-color]"
           colorDataAttribute="data-background-color"
@@ -235,7 +313,7 @@ class App extends Component {
         </section>
 
         <section className="section" data-background-color="rgb(60, 191, 246)">
-          <div className="wrapper wrapper1">
+          <div className="wrapper wrapper2">
             <div className="trigger" ref={this.trigger2} />
             <div className="target" ref={this.target2} />
           </div>
