@@ -5,6 +5,7 @@ import { TweenLite, TimelineLite } from "gsap";
 import "animation.gsap";
 import "debug.addIndicators";
 import ScrollingColorBackground from "react-scrolling-color-background";
+import matchMedia from "./utils/matchMedia";
 
 import "./styles.css";
 
@@ -12,6 +13,8 @@ import "./styles.css";
 //   page = document.getElementsByTagName("body")[0],
 //   pageWidth = window.innerWidth || element.clientWidth || page.clientWidth,
 //   pageHeight = window.innerHeight || element.clientHeight || page.clientHeight;
+
+const media = matchMedia("(max-width: 640px)");
 
 const onCompleteFunc = item => () => {
   console.log(item);
@@ -86,16 +89,25 @@ class App extends Component {
     this.target2 = React.createRef();
   }
 
+  state = {
+    isMobile: media.matches
+  };
+
   componentDidMount() {
+    this.handleResolution(media);
+    media.addListener(this.handleResolution);
+
     const scene1Config = {
       triggerElement: this.trigger1.current,
       duration: 1080,
-      offset: 388
+      offset: 388,
+      triggerHook: this.state.isMobile ? 0.75 : null
     };
     const scene2Config = {
       triggerElement: this.trigger2.current,
       duration: 1080,
-      offset: 388
+      offset: 388,
+      triggerHook: this.state.isMobile ? 0.75 : null
     };
 
     const tween1 = this.tween1
@@ -177,10 +189,20 @@ class App extends Component {
       .addTo(this.controller2);
   }
 
+  componentWillUnmount() {
+    media.removeListener(this.handleResolution);
+  }
+
+  handleResolution = mediaQueryList => {
+    this.setState({
+      isMobile: mediaQueryList.matches
+    });
+  };
+
   render() {
+    // console.log(this.state.isMobile);
     return (
       <div className="root">
-
         <ScrollingColorBackground
           selector=".section[data-background-color]"
           colorDataAttribute="data-background-color"
