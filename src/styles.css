@@ -1,7 +1,7 @@
 body {
   margin: 0;
   position: relative;
-  background-color: rgb(32, 202, 172);
+  /*background-color: rgb(32, 202, 172);*/
 }
 
 .root {
@@ -20,15 +20,18 @@ body {
 }
 
 .wrapper1 {
- background-image: url(./assets/images/Slide_1_sheme.png);
+  background-image: url(./assets/images/Slide_1_sheme.png);
 }
 
 .wrapper2 {
- background-image: url(./assets/images/Slide_2_sheme_desctop.png);
+  background-image: url(./assets/images/Slide_2_sheme_desctop.png);
+}
+
+.wrapper3 {
+  background-image: url(./assets/images/Slide_3_sheme_2.png);
 }
 
 .target {
-
 }
 
 .ball {
@@ -38,13 +41,14 @@ body {
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.5;
 }
 
 .ball.isFixed {
-    position: fixed;
-    left: 50%;
-    top: 100px;
-    z-index: 1;
+  position: fixed;
+  left: 50%;
+  top: 100px;
+  z-index: 1;
 }
 
 .spacer {

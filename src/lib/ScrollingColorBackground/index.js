@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import throttle from 'lodash.throttle'
 import chroma from 'chroma-js'
@@ -59,12 +59,22 @@ class ScrollingColorBackground extends Component {
     const rgbString = `rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`
 
     if (rgbString !== this.state.rgbString) {
-      document.body.style = `background-color: ${rgbString};`;
+      this.props.onChange(rgbString)
       this.setState({ rgbString })
     }
   }
   render() {
-    return null;
+    const { className, rgbString } = this.state
+    const { style } = this.props
+    return (
+      <section
+        style={{
+          ...style,
+          backgroundColor: rgbString
+        }}
+        className={className}
+      />
+    )
   }
 }
 
@@ -73,7 +83,8 @@ ScrollingColorBackground.propTypes = {
   style: PropTypes.object.isRequired,
   initialRgb: PropTypes.string.isRequired,
   selector: PropTypes.string.isRequired,
-  colorDataAttribute: PropTypes.string.isRequired
+  colorDataAttribute: PropTypes.string.isRequired,
+  onChange: PropTypes.func
 }
 
 ScrollingColorBackground.defaultProps = {
@@ -87,7 +98,8 @@ ScrollingColorBackground.defaultProps = {
   },
   initialRgb: 'rgb(0,0,0)',
   selector: '[data-background-color]',
-  colorDataAttribute: 'data-background-color'
+  colorDataAttribute: 'data-background-color',
+  onChange: ()=>{}
 }
 
 export default ScrollingColorBackground

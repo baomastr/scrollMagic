@@ -18,21 +18,6 @@ const PADDING_TOP = 120;
 
 const media = matchMedia("(max-width: 640px)");
 
-// const onCompleteFunc = item => () => {
-//   console.log(item);
-// };
-//
-// const sceneEventFunc = event => {
-//   const logger = () => console.log("Event fired! (" + event.type + ")");
-//
-//   if (
-//     event.type === "start" ||
-//     event.type === "leave" ||
-//     event.type === "end"
-//   ) {
-//     logger();
-//   }
-// };
 
 const flightpath1 = {
   "1": {
@@ -97,19 +82,52 @@ const flightpath2 = {
   }
 };
 
+const flightpath3 = {
+  "1": {
+    values: [{ x: 0 }, { x: 255 }]
+  },
+  "2": {
+    values: [{ x: 255 }, { x: 289 }]
+  },
+  "3": {
+    values: [{ x: 289 }, { x: 255 }]
+  },
+  "4": {
+    values: [{ x: 255 }, { x: 108 }]
+  },
+  "5": {
+    values: [{ x: 108 }, { x: -290 }]
+  },
+  "6": {
+    values: [{ x: -290 }, { x: -324 }]
+  },
+  "7": {
+    values: [{ x: -324 }, { x: -290 }]
+  },
+  "8": {
+    values: [{ x: -290 }, { x: -144 }]
+  },
+  "9": {
+    values: [{ x: -144 }, { x: 0 }]
+  }
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.controller1 = new ScrollMagic.Controller();
     this.controller2 = new ScrollMagic.Controller();
-    // this.scene = new ScrollMagic.Scene();
+    this.controller3 = new ScrollMagic.Controller();
     this.tween1 = new TimelineLite();
     this.tween2 = new TimelineLite();
+    this.tween3 = new TimelineLite();
     this.ball = React.createRef();
     this.trigger1 = React.createRef();
     this.trigger2 = React.createRef();
+    this.trigger3 = React.createRef();
     this.target1 = React.createRef();
     this.target2 = React.createRef();
+    this.target3 = React.createRef();
     this.backgroundSection = React.createRef();
   }
 
@@ -125,30 +143,29 @@ class App extends Component {
       triggerElement: this.trigger1.current,
       duration: 1080,
       triggerHook: PADDING_TOP / pageHeight
-      // offset: 388,
-      // triggerHook: this.state.isMobile ? 0.75 : .5
     };
     const scene2Config = {
       triggerElement: this.trigger2.current,
       duration: 1080,
       triggerHook: PADDING_TOP / pageHeight
-      // offset: 388,
-      // triggerHook: this.state.isMobile ? 0.75 : .5
+    };
+    const scene3Config = {
+      triggerElement: this.trigger3.current,
+      duration: 1080,
+      triggerHook: PADDING_TOP / pageHeight
     };
 
-    // const steppedEase = new SteppedEase(5);
 
     const tween1 = this.tween1
       .add(
         TweenLite.to(this.ball.current, 1.13, {
           css: { bezier: flightpath1["1"] },
-          // ease: Power0.easeNone
         })
       )
       .add(
         TweenLite.to(this.ball.current, 1.36, {
           css: { bezier: flightpath1["2"] },
-          ease: SteppedEase.config(12),
+          ease: Power0.easeNone,
         })
       )
       .add(
@@ -160,7 +177,7 @@ class App extends Component {
       .add(
         TweenLite.to(this.ball.current, 1.05, {
           css: { bezier: flightpath1["4"] },
-          ease: SteppedEase.config(12),
+          ease: Power0.easeNone,
         })
       )
       .add(
@@ -199,7 +216,7 @@ class App extends Component {
       .add(
         TweenLite.to(this.ball.current, 2.38,{
           css: { bezier: flightpath2["4"] },
-          ease: SteppedEase.config(12),
+          ease: Power0.easeNone,
         })
       )
       .add(
@@ -241,7 +258,7 @@ class App extends Component {
       .add(
         TweenLite.to(this.ball.current, 0.67,{
           css: { bezier: flightpath2["11"] },
-          ease: SteppedEase.config(12),
+          ease: Power0.easeNone,
         })
       )
       .add(
@@ -257,19 +274,76 @@ class App extends Component {
         })
       );
 
+    const tween3 = this.tween3
+      .add(
+        TweenLite.to(this.ball.current, 1.25, {
+          css: { bezier: flightpath3["1"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.467, {
+          css: { bezier: flightpath3["2"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.467, {
+          css: { bezier: flightpath3["3"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 1.625, {
+          css: { bezier: flightpath3["4"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 1.933, {
+          css: { bezier: flightpath3["5"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.467, {
+          css: { bezier: flightpath3["6"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.467, {
+          css: { bezier: flightpath3["7"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 1.608, {
+          css: { bezier: flightpath3["8"] },
+          ease: Power0.easeNone
+        })
+      )
+      .add(
+        TweenLite.to(this.ball.current, 0.717, {
+          css: { bezier: flightpath3["9"] },
+          ease: Power0.easeNone
+        })
+      );
+
     new ScrollMagic.Scene(scene1Config)
-      // .on("change update progress start end enter leave", sceneEventFunc)
       .setPin(this.target1.current)
       .setTween(tween1)
-      .addIndicators() // add indicators (requires plugin)
       .addTo(this.controller1);
 
     new ScrollMagic.Scene(scene2Config)
-      // .on("change update progress start end enter leave", sceneEventFunc)
       .setPin(this.target2.current)
       .setTween(tween2)
-      .addIndicators() // add indicators (requires plugin)
       .addTo(this.controller2);
+
+    new ScrollMagic.Scene(scene3Config)
+      .setPin(this.target3.current)
+      .setTween(tween3)
+      .addTo(this.controller3);
   }
 
   componentWillUnmount() {
@@ -283,9 +357,6 @@ class App extends Component {
   };
 
   render() {
-    // console.log(this.state.isMobile);
-    // console.log(PADDING_TOP/pageHeight);
-    // console.log(this.backgroundSection.current && this.backgroundSection.current.state ? this.backgroundSection.current.state.rgbString : null);
     return (
       <div className="root" style={{ paddingTop: PADDING_TOP }}>
         <ScrollingColorBackground
@@ -316,6 +387,13 @@ class App extends Component {
           <div className="wrapper wrapper2">
             <div className="trigger" ref={this.trigger2} />
             <div className="target" ref={this.target2} />
+          </div>
+        </section>
+
+        <section className="section" data-background-color="rgb(160, 91, 126)">
+          <div className="wrapper wrapper3">
+            <div className="trigger" ref={this.trigger3} />
+            <div className="target" ref={this.target3} />
           </div>
         </section>
 
