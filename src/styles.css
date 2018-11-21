@@ -39,9 +39,10 @@ body {
   width: 40px;
   background-color: red;
   border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  /*margin-left: auto;
+  margin-right: auto;*/
   opacity: 0.5;
+  will-change: margin-left;
 }
 
 .ball.isFixed {

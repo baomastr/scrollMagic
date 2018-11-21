@@ -161,32 +161,11 @@ const paths3 = [
 const generateBallPaths = (paths, isMobile) => {
   let newArray = [];
 
-  paths.forEach((path, index) => {
-    if (index === 0) {
-      newArray.push({
-        horizontalOffset: {
-          values: [
-            { x: 0 },
-            { x: isMobile ? path.horizontal * 0.46875 : path.horizontal }
-          ]
-        },
-        duration: path.vertical
-      });
-    } else {
-      newArray.push({
-        horizontalOffset: {
-          values: [
-            {
-              x: isMobile
-                ? paths[index - 1].horizontal * 0.46875
-                : paths[index - 1].horizontal
-            },
-            { x: isMobile ? path.horizontal * 0.46875 : path.horizontal }
-          ]
-        },
-        duration: path.vertical
-      });
-    }
+  paths.forEach(path => {
+    newArray.push({
+      horizontalOffset: isMobile ? path.horizontal * 0.46875 : path.horizontal,
+      duration: path.vertical
+    });
   });
 
   return newArray;
@@ -250,7 +229,9 @@ class App extends Component {
     ballPaths1.forEach(item => {
       return this.tween1.add(
         TweenLite.to(this.ball.current, item.duration, {
-          css: { bezier: item.horizontalOffset },
+          css: {
+            "margin-left": `${item.horizontalOffset}px`
+          },
           ease: Power0.easeNone
         })
       );
@@ -258,7 +239,9 @@ class App extends Component {
     ballPaths2.forEach(item => {
       return this.tween2.add(
         TweenLite.to(this.ball.current, item.duration, {
-          css: { bezier: item.horizontalOffset },
+          css: {
+            "margin-left": `${item.horizontalOffset}px`
+          },
           ease: Power0.easeNone
         })
       );
@@ -266,7 +249,9 @@ class App extends Component {
     ballPaths3.forEach(item => {
       return this.tween3.add(
         TweenLite.to(this.ball.current, item.duration, {
-          css: { bezier: item.horizontalOffset },
+          css: {
+            "margin-left": `${item.horizontalOffset}px`
+          },
           ease: Power0.easeNone
         })
       );
