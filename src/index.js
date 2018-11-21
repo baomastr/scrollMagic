@@ -18,98 +18,189 @@ const PADDING_TOP = 120;
 
 const media = matchMedia("(max-width: 640px)");
 
-
-const flightpath1 = {
-  "1": {
-    values: [{ x: 0 }, { x: 280 }]
+const ballPaths1 = [
+  {
+    x: {
+      values: [{ x: 0 }, { x: 280 }]
+    },
+    y: 1.13
   },
-  "2": {
-    values: [{ x: 280 }, { x: 94 }]
+  {
+    x: {
+      values: [{ x: 280 }, { x: 94 }]
+    },
+    y: 1.36
   },
-  "3": {
-    values: [{ x: 94 }, { x: -60 }]
+  {
+    x: {
+      values: [{ x: 94 }, { x: -60 }]
+    },
+    y: 0.61
   },
-  "4": {
-    values: [{ x: -60 }, { x: -230 }]
+  {
+    x: {
+      values: [{ x: -60 }, { x: -230 }]
+    },
+    y: 1.05
   },
-  "5": {
-    values: [{ x: -230 }, { x: -335 }]
+  {
+    x: {
+      values: [{ x: -230 }, { x: -335 }]
+    },
+    y: 0.61
   },
-  "6": {
-    values: [{ x: -335 }, { x: 0 }]
+  {
+    x: {
+      values: [{ x: -335 }, { x: 0 }]
+    },
+    y: 1.2
   }
-};
+];
 
-const flightpath2 = {
-  "1": {
-    values: [{ x: 0 }, { x: 128 }]
+const ballPaths2 = [
+  {
+    x: {
+      values: [{ x: 0 }, { x: 128 }]
+    },
+    y: 0.87
   },
-  "2": {
-    values: [{ x: 128 }, { x: 157 }]
+  {
+    x: {
+      values: [{ x: 128 }, { x: 157 }]
+    },
+    y: 0.67
   },
-  "3": {
-    values: [{ x: 157 }, { x: 128 }]
+  {
+    x: {
+      values: [{ x: 157 }, { x: 128 }]
+    },
+    y: 0.67
   },
-  "4": {
-    values: [{ x: 128 }, { x: -16 }]
+  {
+    x: {
+      values: [{ x: 128 }, { x: -16 }]
+    },
+    y: 2.38
   },
-  "5": {
-    values: [{ x: -16 }, { x: -45 }]
+  {
+    x: {
+      values: [{ x: -16 }, { x: -45 }]
+    },
+    y: 0.67
   },
-  "6": {
-    values: [{ x: -45 }, { x: -16 }]
+  {
+    x: {
+      values: [{ x: -45 }, { x: -16 }]
+    },
+    y: 0.67
   },
-  "7": {
-    values: [{ x: -16 }, { x: 13 }]
+  {
+    x: {
+      values: [{ x: -16 }, { x: 13 }]
+    },
+    y: 0.67
   },
-  "8": {
-    values: [{ x: 13 }, { x: -16 }]
+  {
+    x: {
+      values: [{ x: 13 }, { x: -16 }]
+    },
+    y: 0.67
   },
-  "9": {
-    values: [{ x: -16 }, { x: -228 }]
+  {
+    x: {
+      values: [{ x: -16 }, { x: -228 }]
+    },
+    y: 1.49
   },
-  "10": {
-    values: [{ x: -228 }, { x: -257 }]
+  {
+    x: {
+      values: [{ x: -228 }, { x: -257 }]
+    },
+    y: 0.67
   },
-  "11": {
-    values: [{ x: -257 }, { x: -228 }]
+  {
+    x: {
+      values: [{ x: -257 }, { x: -228 }]
+    },
+    y: 0.67
   },
-  "12": {
-    values: [{ x: -228 }, { x: -30 }]
+  {
+    x: {
+      values: [{ x: -228 }, { x: -30 }]
+    },
+    y: 1.73
   },
-  "13": {
-    values: [{ x: -30 }, { x: 0 }]
+  {
+    x: {
+      values: [{ x: -30 }, { x: 0 }]
+    },
+    y: 1.12
   }
-};
+];
 
-const flightpath3 = {
-  "1": {
-    values: [{ x: 0 }, { x: 255 }]
+const ballPaths3 = [
+  {
+    x: {
+      values: [{ x: 0 }, { x: 255 }]
+    },
+    y: 1.25
   },
-  "2": {
-    values: [{ x: 255 }, { x: 289 }]
+  {
+    x: {
+      values: [{ x: 255 }, { x: 289 }]
+    },
+    y: 0.467
   },
-  "3": {
-    values: [{ x: 289 }, { x: 255 }]
+  {
+    x: {
+      values: [{ x: 289 }, { x: 255 }]
+    },
+    y: 0.467
   },
-  "4": {
-    values: [{ x: 255 }, { x: 108 }]
+  {
+    x: {
+      values: [{ x: 255 }, { x: 108 }]
+    },
+    y: 1.625
   },
-  "5": {
-    values: [{ x: 108 }, { x: -290 }]
+  {
+    x: {
+      values: [{ x: 108 }, { x: -290 }]
+    },
+    y: 1.933
   },
-  "6": {
-    values: [{ x: -290 }, { x: -324 }]
+  {
+    x: {
+      values: [{ x: -290 }, { x: -324 }]
+    },
+    y: 0.467
   },
-  "7": {
-    values: [{ x: -324 }, { x: -290 }]
+  {
+    x: {
+      values: [{ x: -324 }, { x: -290 }]
+    },
+    y: 0.467
   },
-  "8": {
-    values: [{ x: -290 }, { x: -144 }]
+  {
+    x: {
+      values: [{ x: -290 }, { x: -144 }]
+    },
+    y: 1.608
   },
-  "9": {
-    values: [{ x: -144 }, { x: 0 }]
+  {
+    x: {
+      values: [{ x: -144 }, { x: 0 }]
+    },
+    y: 0.717
   }
+];
+
+const generateSceneConfig = target => {
+  return {
+    triggerElement: target,
+    duration: 1080,
+    triggerHook: PADDING_TOP / pageHeight
+  };
 };
 
 class App extends Component {
@@ -139,210 +230,50 @@ class App extends Component {
     this.handleResolution(media);
     media.addListener(this.handleResolution);
 
-    const scene1Config = {
-      triggerElement: this.trigger1.current,
-      duration: 1080,
-      triggerHook: PADDING_TOP / pageHeight
-    };
-    const scene2Config = {
-      triggerElement: this.trigger2.current,
-      duration: 1080,
-      triggerHook: PADDING_TOP / pageHeight
-    };
-    const scene3Config = {
-      triggerElement: this.trigger3.current,
-      duration: 1080,
-      triggerHook: PADDING_TOP / pageHeight
-    };
+    const scene1Config = generateSceneConfig(this.trigger1.current);
+    const scene2Config = generateSceneConfig(this.trigger2.current);
+    const scene3Config = generateSceneConfig(this.trigger3.current);
 
-
-    const tween1 = this.tween1
-      .add(
-        TweenLite.to(this.ball.current, 1.13, {
-          css: { bezier: flightpath1["1"] },
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.36, {
-          css: { bezier: flightpath1["2"] },
-          ease: Power0.easeNone,
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.61, {
-          css: { bezier: flightpath1["3"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.05, {
-          css: { bezier: flightpath1["4"] },
-          ease: Power0.easeNone,
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.61, {
-          css: { bezier: flightpath1["5"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.2, {
-          css: { bezier: flightpath1["6"] },
+    ballPaths1.forEach(item => {
+      return this.tween1.add(
+        TweenLite.to(this.ball.current, item.y, {
+          css: { bezier: item.x },
           ease: Power0.easeNone
         })
       );
+    });
 
-
-    const tween2 = this.tween2
-      .add(
-        TweenLite.to(this.ball.current, 0.87,{
-          css: { bezier: flightpath2["1"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.67,{
-          css: { bezier: flightpath2["2"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.67,{
-          css: { bezier: flightpath2["3"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 2.38,{
-          css: { bezier: flightpath2["4"] },
-          ease: Power0.easeNone,
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.67,{
-          css: { bezier: flightpath2["5"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.67,{
-          css: { bezier: flightpath2["6"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.67,{
-          css: { bezier: flightpath2["7"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.67,{
-          css: { bezier: flightpath2["8"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.49,{
-          css: { bezier: flightpath2["9"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.67,{
-          css: { bezier: flightpath2["10"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.67,{
-          css: { bezier: flightpath2["11"] },
-          ease: Power0.easeNone,
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.73,{
-          css: { bezier: flightpath2["12"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.12,{
-          css: { bezier: flightpath2["13"] },
+    ballPaths2.forEach(item => {
+      return this.tween2.add(
+        TweenLite.to(this.ball.current, item.y, {
+          css: { bezier: item.x },
           ease: Power0.easeNone
         })
       );
+    });
 
-    const tween3 = this.tween3
-      .add(
-        TweenLite.to(this.ball.current, 1.25, {
-          css: { bezier: flightpath3["1"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.467, {
-          css: { bezier: flightpath3["2"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.467, {
-          css: { bezier: flightpath3["3"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.625, {
-          css: { bezier: flightpath3["4"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.933, {
-          css: { bezier: flightpath3["5"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.467, {
-          css: { bezier: flightpath3["6"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.467, {
-          css: { bezier: flightpath3["7"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 1.608, {
-          css: { bezier: flightpath3["8"] },
-          ease: Power0.easeNone
-        })
-      )
-      .add(
-        TweenLite.to(this.ball.current, 0.717, {
-          css: { bezier: flightpath3["9"] },
+    ballPaths3.forEach(item => {
+      return this.tween3.add(
+        TweenLite.to(this.ball.current, item.y, {
+          css: { bezier: item.x },
           ease: Power0.easeNone
         })
       );
+    });
 
     new ScrollMagic.Scene(scene1Config)
       .setPin(this.target1.current)
-      .setTween(tween1)
+      .setTween(this.tween1)
       .addTo(this.controller1);
 
     new ScrollMagic.Scene(scene2Config)
       .setPin(this.target2.current)
-      .setTween(tween2)
+      .setTween(this.tween2)
       .addTo(this.controller2);
 
     new ScrollMagic.Scene(scene3Config)
       .setPin(this.target3.current)
-      .setTween(tween3)
+      .setTween(this.tween3)
       .addTo(this.controller3);
   }
 
