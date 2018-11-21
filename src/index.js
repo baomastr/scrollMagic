@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import ScrollMagic from "scrollmagic";
-import { TweenLite, TimelineLite, SteppedEase, Power0 } from "gsap";
+import { TweenLite, TimelineLite, Power0 } from "gsap";
 import "animation.gsap";
 import "debug.addIndicators";
 import ScrollingColorBackground from "./lib/ScrollingColorBackground";
@@ -18,182 +18,170 @@ const PADDING_TOP = 120;
 
 const media = matchMedia("(max-width: 640px)");
 
-const ballPaths1 = [
+const paths1 = [
   {
-    x: {
-      values: [{ x: 0 }, { x: 280 }]
-    },
-    y: 1.13
+    horizontal: 250,
+    vertical: 1.38
   },
   {
-    x: {
-      values: [{ x: 280 }, { x: 94 }]
-    },
-    y: 1.36
+    horizontal: 284,
+    vertical: 0.519
   },
   {
-    x: {
-      values: [{ x: 94 }, { x: -60 }]
-    },
-    y: 0.61
+    horizontal: 250,
+    vertical: 0.463
   },
   {
-    x: {
-      values: [{ x: -60 }, { x: -230 }]
-    },
-    y: 1.05
+    horizontal: 115,
+    vertical: 1.824
   },
   {
-    x: {
-      values: [{ x: -230 }, { x: -335 }]
-    },
-    y: 0.61
+    horizontal: -66,
+    vertical: 1.009
   },
   {
-    x: {
-      values: [{ x: -335 }, { x: 0 }]
-    },
-    y: 1.2
+    horizontal: -203,
+    vertical: 1.824
+  },
+  {
+    horizontal: -291,
+    vertical: 0.463
+  },
+  {
+    horizontal: -325,
+    vertical: 0.519
+  },
+  {
+    horizontal: -291,
+    vertical: 0.5
+  },
+  {
+    horizontal: 0,
+    vertical: 1.5
   }
 ];
 
-const ballPaths2 = [
+const paths2 = [
   {
-    x: {
-      values: [{ x: 0 }, { x: 128 }]
-    },
-    y: 0.87
+    horizontal: 121,
+    vertical: 0.843
   },
   {
-    x: {
-      values: [{ x: 128 }, { x: 157 }]
-    },
-    y: 0.67
+    horizontal: 155,
+    vertical: 0.674
   },
   {
-    x: {
-      values: [{ x: 157 }, { x: 128 }]
-    },
-    y: 0.67
+    horizontal: 121,
+    vertical: 0.674
   },
   {
-    x: {
-      values: [{ x: 128 }, { x: -16 }]
-    },
-    y: 2.38
+    horizontal: -30,
+    vertical: 2.299
   },
   {
-    x: {
-      values: [{ x: -16 }, { x: -45 }]
-    },
-    y: 0.67
+    horizontal: -65,
+    vertical: 0.674
   },
   {
-    x: {
-      values: [{ x: -45 }, { x: -16 }]
-    },
-    y: 0.67
+    horizontal: -20,
+    vertical: 0.674
   },
   {
-    x: {
-      values: [{ x: -16 }, { x: 13 }]
-    },
-    y: 0.67
+    horizontal: 14,
+    vertical: 0.674
   },
   {
-    x: {
-      values: [{ x: 13 }, { x: -16 }]
-    },
-    y: 0.67
+    horizontal: -30,
+    vertical: 0.602
   },
   {
-    x: {
-      values: [{ x: -16 }, { x: -228 }]
-    },
-    y: 1.49
+    horizontal: -239,
+    vertical: 1.505
   },
   {
-    x: {
-      values: [{ x: -228 }, { x: -257 }]
-    },
-    y: 0.67
+    horizontal: -273,
+    vertical: 0.674
   },
   {
-    x: {
-      values: [{ x: -257 }, { x: -228 }]
-    },
-    y: 0.67
+    horizontal: -239,
+    vertical: 0.626
   },
   {
-    x: {
-      values: [{ x: -228 }, { x: -30 }]
-    },
-    y: 1.73
+    horizontal: -101,
+    vertical: 2.407
   },
   {
-    x: {
-      values: [{ x: -30 }, { x: 0 }]
-    },
-    y: 1.12
+    horizontal: 0,
+    vertical: 0.674
   }
 ];
 
-const ballPaths3 = [
+const paths3 = [
   {
-    x: {
-      values: [{ x: 0 }, { x: 255 }]
-    },
-    y: 1.25
+    horizontal: 255,
+    vertical: 1.25
   },
   {
-    x: {
-      values: [{ x: 255 }, { x: 289 }]
-    },
-    y: 0.467
+    horizontal: 289,
+    vertical: 0.467
   },
   {
-    x: {
-      values: [{ x: 289 }, { x: 255 }]
-    },
-    y: 0.467
+    horizontal: 255,
+    vertical: 0.467
   },
   {
-    x: {
-      values: [{ x: 255 }, { x: 108 }]
-    },
-    y: 1.625
+    horizontal: 108,
+    vertical: 1.625
   },
   {
-    x: {
-      values: [{ x: 108 }, { x: -290 }]
-    },
-    y: 1.933
+    horizontal: -290,
+    vertical: 1.933
   },
   {
-    x: {
-      values: [{ x: -290 }, { x: -324 }]
-    },
-    y: 0.467
+    horizontal: -324,
+    vertical: 0.467
   },
   {
-    x: {
-      values: [{ x: -324 }, { x: -290 }]
-    },
-    y: 0.467
+    horizontal: -290,
+    vertical: 0.467
   },
   {
-    x: {
-      values: [{ x: -290 }, { x: -144 }]
-    },
-    y: 1.608
+    horizontal: -144,
+    vertical: 1.608
   },
   {
-    x: {
-      values: [{ x: -144 }, { x: 0 }]
-    },
-    y: 0.717
+    horizontal: 0,
+    vertical: 0.717
   }
 ];
+
+const generateBallPaths = paths => {
+  let newArray = [];
+
+  paths.forEach((path, index) => {
+    if (index === 0) {
+      newArray.push({
+        horizontalOffset: {
+          values: [{ x: 0 }, { x: path.horizontal }]
+        },
+        duration: path.vertical
+      });
+    } else {
+      newArray.push({
+        horizontalOffset: {
+          values: [{ x: paths[index - 1].horizontal }, { x: path.horizontal }]
+        },
+        duration: path.vertical
+      });
+    }
+  });
+
+  return newArray;
+};
+
+const ballPaths1 = generateBallPaths(paths1);
+const ballPaths2 = generateBallPaths(paths2);
+const ballPaths3 = generateBallPaths(paths3);
 
 const generateSceneConfig = target => {
   return {
@@ -209,17 +197,20 @@ class App extends Component {
     this.controller1 = new ScrollMagic.Controller();
     this.controller2 = new ScrollMagic.Controller();
     this.controller3 = new ScrollMagic.Controller();
+
     this.tween1 = new TimelineLite();
     this.tween2 = new TimelineLite();
     this.tween3 = new TimelineLite();
+
     this.ball = React.createRef();
+
     this.trigger1 = React.createRef();
     this.trigger2 = React.createRef();
     this.trigger3 = React.createRef();
+
     this.target1 = React.createRef();
     this.target2 = React.createRef();
     this.target3 = React.createRef();
-    this.backgroundSection = React.createRef();
   }
 
   state = {
@@ -236,26 +227,24 @@ class App extends Component {
 
     ballPaths1.forEach(item => {
       return this.tween1.add(
-        TweenLite.to(this.ball.current, item.y, {
-          css: { bezier: item.x },
+        TweenLite.to(this.ball.current, item.duration, {
+          css: { bezier: item.horizontalOffset },
           ease: Power0.easeNone
         })
       );
     });
-
     ballPaths2.forEach(item => {
       return this.tween2.add(
-        TweenLite.to(this.ball.current, item.y, {
-          css: { bezier: item.x },
+        TweenLite.to(this.ball.current, item.duration, {
+          css: { bezier: item.horizontalOffset },
           ease: Power0.easeNone
         })
       );
     });
-
     ballPaths3.forEach(item => {
       return this.tween3.add(
-        TweenLite.to(this.ball.current, item.y, {
-          css: { bezier: item.x },
+        TweenLite.to(this.ball.current, item.duration, {
+          css: { bezier: item.horizontalOffset },
           ease: Power0.easeNone
         })
       );
@@ -302,7 +291,6 @@ class App extends Component {
             right: "0px",
             bottom: "0px"
           }}
-          ref={this.backgroundSection}
         />
 
         <div className="ball isFixed" ref={this.ball} />
