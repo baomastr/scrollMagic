@@ -9,6 +9,9 @@ import matchMedia from "./utils/matchMedia";
 
 import "./styles.css";
 
+const DESKTOP_HEIGHT = 1080;
+const MOBILE_HEIGHT = 506;
+
 const element = document.documentElement,
   page = document.getElementsByTagName("body")[0],
   pageWidth = window.innerWidth || element.clientWidth || page.clientWidth,
@@ -155,21 +158,31 @@ const paths3 = [
   }
 ];
 
-const generateBallPaths = paths => {
+const generateBallPaths = (paths, isMobile) => {
   let newArray = [];
 
   paths.forEach((path, index) => {
     if (index === 0) {
       newArray.push({
         horizontalOffset: {
-          values: [{ x: 0 }, { x: path.horizontal }]
+          values: [
+            { x: 0 },
+            { x: isMobile ? path.horizontal * 0.46875 : path.horizontal }
+          ]
         },
         duration: path.vertical
       });
     } else {
       newArray.push({
         horizontalOffset: {
-          values: [{ x: paths[index - 1].horizontal }, { x: path.horizontal }]
+          values: [
+            {
+              x: isMobile
+                ? paths[index - 1].horizontal * 0.46875
+                : paths[index - 1].horizontal
+            },
+            { x: isMobile ? path.horizontal * 0.46875 : path.horizontal }
+          ]
         },
         duration: path.vertical
       });
@@ -179,14 +192,10 @@ const generateBallPaths = paths => {
   return newArray;
 };
 
-const ballPaths1 = generateBallPaths(paths1);
-const ballPaths2 = generateBallPaths(paths2);
-const ballPaths3 = generateBallPaths(paths3);
-
-const generateSceneConfig = target => {
+const generateSceneConfig = (target, isMobile) => {
   return {
     triggerElement: target,
-    duration: 1080,
+    duration: isMobile ? MOBILE_HEIGHT : DESKTOP_HEIGHT,
     triggerHook: PADDING_TOP / pageHeight
   };
 };
@@ -221,9 +230,22 @@ class App extends Component {
     this.handleResolution(media);
     media.addListener(this.handleResolution);
 
-    const scene1Config = generateSceneConfig(this.trigger1.current);
-    const scene2Config = generateSceneConfig(this.trigger2.current);
-    const scene3Config = generateSceneConfig(this.trigger3.current);
+    const scene1Config = generateSceneConfig(
+      this.trigger1.current,
+      this.state.isMobile
+    );
+    const scene2Config = generateSceneConfig(
+      this.trigger2.current,
+      this.state.isMobile
+    );
+    const scene3Config = generateSceneConfig(
+      this.trigger3.current,
+      this.state.isMobile
+    );
+
+    const ballPaths1 = generateBallPaths(paths1, this.state.isMobile);
+    const ballPaths2 = generateBallPaths(paths2, this.state.isMobile);
+    const ballPaths3 = generateBallPaths(paths3, this.state.isMobile);
 
     ballPaths1.forEach(item => {
       return this.tween1.add(
@@ -277,7 +299,7 @@ class App extends Component {
   };
 
   handleRgbStringChange = rgbString => {
-    document.body.style = `background-color: ${rgbString}`
+    document.body.style = `background-color: ${rgbString}`;
   };
 
   render() {
