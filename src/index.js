@@ -276,6 +276,10 @@ class App extends Component {
     });
   };
 
+  handleRgbStringChange = rgbString => {
+    document.body.style = `background-color: ${rgbString}`
+  };
+
   render() {
     return (
       <div className="root" style={{ paddingTop: PADDING_TOP }}>
@@ -291,6 +295,7 @@ class App extends Component {
             right: "0px",
             bottom: "0px"
           }}
+          onChange={this.handleRgbStringChange}
         />
 
         <div className="ball isFixed" ref={this.ball} />
